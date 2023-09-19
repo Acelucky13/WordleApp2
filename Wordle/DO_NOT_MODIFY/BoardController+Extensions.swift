@@ -10,7 +10,7 @@ import UIKit
 
 extension BoardController {
   var letterCellIdentifier: String { "LetterCell" }
-  var itemPadding: Double { 3.0 }
+  var itemPadding: Double { 8 }
   
   func enter(_ string: String) {
     guard numTimesGuessed < numItemsPerRow * numRows else { return }
@@ -143,8 +143,23 @@ extension BoardController {
   func collectionView(_ collectionView: UICollectionView,
                       layout collectionViewLayout: UICollectionViewLayout,
                       sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let width = collectionView.frame.size.width / Double(numItemsPerRow) - (Double(numItemsPerRow) - 1.0) * itemPadding
-    let height = collectionView.frame.size.height / Double(numRows) - (Double(numRows) - 1.0) * itemPadding
-    return CGSize(width: width, height: height)
+
+    let horizontalPadding = CGFloat(numItemsPerRow - 1) * itemPadding
+    let horizontalSpace = collectionView.frame.size.width - horizontalPadding
+    let cellWidth = (horizontalSpace / CGFloat(numItemsPerRow)).rounded(.down)
+
+    let verticalPadding = CGFloat(numRows - 1) * itemPadding
+    let verticalSpace = collectionView.frame.size.height - verticalPadding
+    let cellHeight = (verticalSpace / CGFloat(numRows)).rounded(.down)
+
+    return CGSize(width: cellWidth, height: cellHeight)
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    itemPadding
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    itemPadding
   }
 }
