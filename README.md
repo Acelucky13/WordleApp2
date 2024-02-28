@@ -21,7 +21,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] App displays a reset button on the top left to reset the game (but make no changes to the settings)
-
+added new icon images for app to look more elegant.
 The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
@@ -40,7 +40,7 @@ Here is a reminder on how to embed Loom videos on GitHub. Feel free to remove th
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+the challenges met were resizing the images for icon app, but I was able to findout how to implement icons with new resize.
 
 ## License
 
